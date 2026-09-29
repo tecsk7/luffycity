@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-dqk*$lc4*p_-gx!a!%0sf-altkhf)fwxc)^6)jgpa(&sw)6g_9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -41,11 +41,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'rest_framework',
+    'corsheaders',  # 新增 CORS 扩展应用
+
     'home',
 ]
 
+# 允许携带 Cookie 凭证（跨域认证）
+CORS_ALLOW_CREDENTIALS = False
+
+# 允许跨域请求的前端客户端白名单
+CORS_ORIGIN_WHITELIST = [
+    'http://www.luffycity.cn:3000',
+]
+
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # 必须尽量靠前放置
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

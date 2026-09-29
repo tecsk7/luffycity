@@ -16,5 +16,5 @@ class HomeAPIView(APIView):
         print("hello")
         logger.debug('debug message')
         logger.info('info message')
-        brogitther = ['jack', 'lucy']
+        brother = ['jack', 'lucy']
         return Response(brother,status=status.HTTP_200_OK)
