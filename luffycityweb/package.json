@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^9.13.0",
+    "axios": "^0.26.1",
     "element-plus": "2.1.7",
     "unplugin-vue-components": "0.18.5",
     "vue": "^3.2.25",

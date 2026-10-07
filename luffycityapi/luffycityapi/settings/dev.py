@@ -17,6 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 print(BASE_DIR / "apps")
 import sys
 sys.path.insert(0, str(BASE_DIR / "apps"))
+sys.path.insert(0, str( BASE_DIR / "utils" ))
 
 
 

@@ -1,20 +1,46 @@
+# # import constants
+# from rest_framework.generics import ListAPIView
+# from .models import Nav
+# from .serializers import NavModelSerializer
+#
+#
+# class NavHeaderListAPIView(ListAPIView):
+#     """
+#     头部导航
+#     """
+#     queryset = Nav.objects.filter(position=constants.NAV_HEADER_POSITION, is_show=True, is_deleted=False).order_by("orders", "-id")[:constants.NAV_HEADER_SIZE]
+#     serializer_class = NavModelSerializer
+#
+#
+# class NavFooterListAPIView(ListAPIView):
+#     """
+#     脚部导航
+#     """
+#     queryset = Nav.objects.filter(position=constants.NAV_FOOTER_POSITION, is_show=True, is_deleted=False).order_by("orders", "-id")[:constants.NAV_FOOTER_SIZE]
+#     serializer_class = NavModelSerializer
+
+import constants
+from rest_framework.generics import ListAPIView
+from .models import Nav
+from .serializers import NavModelSerializer
+
+NAV_HEADER_POSITION = 0
+NAV_FOOTER_POSITION = 1
+NAV_HEADER_SIZE = 5
+NAV_FOOTER_SIZE = 10
 
 
+class NavHeaderListAPIView(ListAPIView):
+    """
+    头部导航
+    """
+    queryset = Nav.objects.filter(position=constants.NAV_HEADER_POSITION, is_show=True, is_deleted=False).order_by("orders", "-id")[:NAV_HEADER_SIZE]
+    serializer_class = NavModelSerializer
 
-from django.shortcuts import render
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-# Create your views here.
-#log diaoyong
-import logging
-logger = logging.getLogger("django")
 
-class HomeAPIView(APIView):
-    def get(self,request):
-        print("hello")
-        logger.debug('debug message')
-        logger.info('info message')
-        brother = ['jack', 'lucy']
-        return Response(brother,status=status.HTTP_200_OK)
+class NavFooterListAPIView(ListAPIView):
+    """
+    脚部导航
+    """
+    queryset = Nav.objects.filter(position=constants.NAV_FOOTER_POSITION, is_show=True, is_deleted=False).order_by("orders", "-id")[:NAV_FOOTER_SIZE]
+    serializer_class = NavModelSerializer
